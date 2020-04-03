@@ -11,18 +11,32 @@ namespace kata_gof_pattern_command_mars_rover
             _position.ParsePosition(input);
 
             var inputs = input.Split(' ');
-            switch (inputs[5])
+            foreach (var commandChar in inputs[5])
             {
-                case "M": // Move
-                    Move();
-                    break;
+                switch (commandChar)
+                {
+                    case 'M':
+                        Move();
+                        break;
 
-                case "R":
-                    TurnRight();
-                    break;
+                    case 'R':
+                        TurnRight();
+                        break;
+
+                    case 'L':
+                        TurnLeft();
+                        break;
+                }
             }
-
             return _position.ToString();
+        }
+
+        private void TurnLeft()
+        {
+            if (_position.Orientation != Orientation.North)
+                _position.Orientation -= 1;
+            else
+                _position.Orientation = Orientation.West;
         }
 
         private void TurnRight()

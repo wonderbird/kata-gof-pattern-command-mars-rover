@@ -30,5 +30,29 @@ namespace kata_gof_pattern_command_mars_rover_tests
             string actual = rover.ProcessInput(input);
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("5 5 0 0 N L", "0 0 W")]
+        [InlineData("5 5 0 0 W L", "0 0 S")]
+        [InlineData("5 5 0 0 S L", "0 0 E")]
+        [InlineData("5 5 0 0 E L", "0 0 N")]
+        public void ProcessInput_ParseOriginAndTurnLeft_ReturnsCorrectPosition(string input, string expected)
+        {
+            var rover = new RoverController();
+            string actual = rover.ProcessInput(input);
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("5 5 0 0 N ML", "0 1 W")]
+        [InlineData("5 5 0 0 N MRM", "1 1 E")]
+        [InlineData("5 5 3 3 N MRMLLMLMRR", "3 3 N")]
+        public void ProcessInput_CommandSequence_ReturnsCorrectPosition(string input, string expected)
+        {
+            var rover = new RoverController();
+            string actual = rover.ProcessInput(input);
+            Assert.Equal(expected, actual);
+        }
+
     }
 }
