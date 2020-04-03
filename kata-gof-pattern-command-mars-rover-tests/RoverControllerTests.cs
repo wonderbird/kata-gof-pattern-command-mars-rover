@@ -10,7 +10,21 @@ namespace kata_gof_pattern_command_mars_rover_tests
         [InlineData("5 5 0 1 N M", "0 2 N")]
         [InlineData("5 5 1 1 N M", "1 2 N")]
         [InlineData("5 5 1 1 E M", "2 1 E")]
+        [InlineData("5 5 1 1 S M", "1 0 S")]
+        [InlineData("5 5 1 1 W M", "0 1 W")]
         public void ProcessInput_ParseOriginAndMove_ReturnsCorrectPosition(string input, string expected)
+        {
+            var rover = new RoverController();
+            string actual = rover.ProcessInput(input);
+            Assert.Equal(expected, actual);
+        }
+
+        [Theory]
+        [InlineData("5 5 0 0 N R", "0 0 E")]
+        [InlineData("5 5 0 0 E R", "0 0 S")]
+        [InlineData("5 5 0 0 S R", "0 0 W")]
+        [InlineData("5 5 0 0 W R", "0 0 N")]
+        public void ProcessInput_ParseOriginAndTurnRight_ReturnsCorrectPosition(string input, string expected)
         {
             var rover = new RoverController();
             string actual = rover.ProcessInput(input);
