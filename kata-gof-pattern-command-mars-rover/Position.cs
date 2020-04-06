@@ -8,14 +8,18 @@
 
         public int Y { set; get; }
 
-        public void ParsePosition(string input)
+        public static Position Parse(string input)
         {
+            var position = new Position();
+
             var inputFields = input.Split(' ');
-            X = int.Parse(inputFields[2]);
-            Y = int.Parse(inputFields[3]);
+            position.X = int.Parse(inputFields[2]);
+            position.Y = int.Parse(inputFields[3]);
 
             var orientationChar = inputFields[4];
-            Orientation = OrientationExtensions.Parse(orientationChar);
+            position.Orientation = OrientationExtensions.Parse(orientationChar);
+
+            return position;
         }
 
         public override string ToString()

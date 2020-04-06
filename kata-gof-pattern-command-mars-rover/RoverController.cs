@@ -2,22 +2,22 @@
 {
     public class RoverController
     {
-        private readonly Position _position = new Position();
 
         public string ProcessInput(string input)
         {
-            _position.ParsePosition(input);
+            var position = Position.Parse(input);
 
-            var commandFactory = new CommandFactory(_position);
+            var commandParser = new CommandParser();
 
             var inputs = input.Split(' ');
             foreach (var commandChar in inputs[5])
             {
-                var command = commandFactory.Create(commandChar);
+                var command = commandParser.Parse(commandChar);
+                command.Position = position;
                 command.Execute();
             }
 
-            return _position.ToString();
+            return position.ToString();
         }
     }
 }

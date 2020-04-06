@@ -37,6 +37,7 @@ Goal: You are given the input described above. Move the rover according to the i
 
 * Implement commands that move the rover forward (M).
 * Implement commands that turn the rover left/right (L,R).
+* If a command is malformed, then print an appropriate message.
 * Implement wrapping from one edge of the grid to another. (planets are spheres after all)
 * Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point and reports the obstacle.
 

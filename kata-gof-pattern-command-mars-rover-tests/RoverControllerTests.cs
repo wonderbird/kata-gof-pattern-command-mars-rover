@@ -54,5 +54,12 @@ namespace kata_gof_pattern_command_mars_rover_tests
             Assert.Equal(expected, actual);
         }
 
+        [Fact]
+        public void ProcessInput_InvalidCommand_ReportsError()
+        {
+            var rover = new RoverController();
+            string actual = rover.ProcessInput("5 5 0 0 N 1");
+            Assert.Equal(actual, "Invalid Command: 1");
+        }
     }
 }
