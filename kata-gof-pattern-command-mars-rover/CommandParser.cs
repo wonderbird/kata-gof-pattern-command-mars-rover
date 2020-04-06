@@ -11,19 +11,24 @@ namespace kata_gof_pattern_command_mars_rover
             new MoveCommand(),
             new TurnLeftCommand(),
             new TurnRightCommand(),
-            new InvalidCommand()
         };
 
         public Command Parse(char commandChar)
         {
             var factory = FindCommandFactory(commandChar);
+
+            if (factory == null)
+            {
+                throw new InputParseException(string.Format(InputParseException.InvalidCommandMessage, commandChar));
+            }
+
             var command = factory.Create();
             return command;
         }
 
         private ICommandFactory FindCommandFactory(char commandChar)
         {
-            return _availableCommands.First(x => x.CommandName == commandChar);
+            return _availableCommands.FirstOrDefault(x => x.CommandName == commandChar);
         }
     }
 }

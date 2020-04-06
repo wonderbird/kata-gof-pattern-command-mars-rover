@@ -54,12 +54,17 @@ namespace kata_gof_pattern_command_mars_rover_tests
             Assert.Equal(expected, actual);
         }
 
-        [Fact]
-        public void ProcessInput_InvalidCommand_ReportsError()
+        [Theory]
+        [InlineData("", "Invalid position: not enough fields in input string")]
+        [InlineData("5 5 O 1 M", "Invalid value format 'O'")]
+        [InlineData("5 5 1 N M", "Invalid value format 'N'")]
+        [InlineData("5 5 0 0 N 1", "Invalid command '1'")]
+        [InlineData("5 5 0 0 N ML1", "Invalid command '1'")]
+        public void ProcessInput_InvalidPosition_ReportsError(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput("5 5 0 0 N 1");
-            Assert.Equal(actual, "Invalid Command: 1");
+            string actual = rover.ProcessInput(input);
+            Assert.Equal(actual, expected);
         }
     }
 }

@@ -1,23 +1,35 @@
-﻿namespace kata_gof_pattern_command_mars_rover
+﻿using System.Collections.Generic;
+
+namespace kata_gof_pattern_command_mars_rover
 {
     public class RoverController
     {
 
         public string ProcessInput(string input)
         {
-            var position = Position.Parse(input);
-
-            var commandParser = new CommandParser();
-
-            var inputs = input.Split(' ');
-            foreach (var commandChar in inputs[5])
+            try
             {
-                var command = commandParser.Parse(commandChar);
-                command.Position = position;
-                command.Execute();
-            }
+                var position = Position.Parse(input);
 
-            return position.ToString();
+                var commandParser = new CommandParser();
+
+                var inputs = input.Split(' ');
+                var commands = new List<Command>();
+                foreach (var commandChar in inputs[5])
+                {
+                    var command = commandParser.Parse(commandChar);
+                    command.Position = position;
+                    commands.Add(command);
+                }
+
+                commands.ForEach(c => c.Execute());
+
+                return position.ToString();
+            }
+            catch (InputParseException e)
+            {
+                return e.Message;
+            }
         }
     }
 }
