@@ -68,6 +68,7 @@ Sample output:
 
 - Avoid duplicated code (use `tools\dupfinder.bat`).
 - Fix all static code analysis warnings.
+- Check the Cyclomatic Complexity of your source code files. For me, the most complex class hat a value of 8. See Visual Studio -> Analyze -> Calculate Code Metrics.
 
 ## References
 

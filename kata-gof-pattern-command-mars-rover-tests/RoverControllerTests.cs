@@ -15,7 +15,7 @@ namespace kata_gof_pattern_command_mars_rover_tests
         public void ProcessInput_ParseOriginAndMove_ReturnsCorrectPosition(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput(input);
+            var actual = rover.ProcessInput(input);
             Assert.Equal(expected, actual);
         }
 
@@ -27,7 +27,7 @@ namespace kata_gof_pattern_command_mars_rover_tests
         public void ProcessInput_ParseOriginAndTurnRight_ReturnsCorrectPosition(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput(input);
+            var actual = rover.ProcessInput(input);
             Assert.Equal(expected, actual);
         }
 
@@ -39,7 +39,7 @@ namespace kata_gof_pattern_command_mars_rover_tests
         public void ProcessInput_ParseOriginAndTurnLeft_ReturnsCorrectPosition(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput(input);
+            var actual = rover.ProcessInput(input);
             Assert.Equal(expected, actual);
         }
 
@@ -50,7 +50,7 @@ namespace kata_gof_pattern_command_mars_rover_tests
         public void ProcessInput_CommandSequence_ReturnsCorrectPosition(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput(input);
+            var actual = rover.ProcessInput(input);
             Assert.Equal(expected, actual);
         }
 
@@ -64,8 +64,20 @@ namespace kata_gof_pattern_command_mars_rover_tests
         public void ProcessInput_InvalidPosition_ReportsError(string input, string expected)
         {
             var rover = new RoverController();
-            string actual = rover.ProcessInput(input);
+            var actual = rover.ProcessInput(input);
             Assert.Equal(actual, expected);
+        }
+
+        [Theory]
+        [InlineData("5 5 4 4 N M", "4 0 N")]
+        [InlineData("5 5 0 0 S M", "0 4 S")]
+        [InlineData("5 5 4 0 E M", "0 0 E")]
+        [InlineData("5 5 0 0 W M", "4 0 W")]
+        public void ProcessInput_RoverLeavesGrid_ReturnsWrappedPosition(string input, string expected)
+        {
+            var rover = new RoverController();
+            var actual = rover.ProcessInput(input);
+            Assert.Equal(expected, actual);
         }
     }
 }
