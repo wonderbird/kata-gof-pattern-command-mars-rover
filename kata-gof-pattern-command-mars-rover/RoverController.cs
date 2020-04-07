@@ -9,7 +9,7 @@ namespace kata_gof_pattern_command_mars_rover
         {
             try
             {
-                var position = Position.Parse(input);
+                var position = PositionParser.Parse(input);
 
                 var commandParser = new CommandParser();
 

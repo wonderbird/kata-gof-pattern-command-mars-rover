@@ -4,48 +4,11 @@ namespace kata_gof_pattern_command_mars_rover
 {
     public class Position
     {
-        private const int NumberOfFieldsForPosition = 5;
-
         public Orientation Orientation { set; get; }
 
         public int X { set; get; }
 
         public int Y { set; get; }
-
-        public static Position Parse(string input)
-        {
-            var position = new Position();
-
-            var inputFields = input.Split(' ');
-            if (inputFields.Length < NumberOfFieldsForPosition)
-            {
-                throw new InputParseException(InputParseException.InvalidPositionMessage);
-            }
-
-            throw new Exception("TODO: Cleanup and refactor");
-            try
-            {
-                position.X = int.Parse(inputFields[2]);
-            }
-            catch (FormatException)
-            {
-                throw new InputParseException(string.Format(InputParseException.InvalidValueFormatMessage, inputFields[2]));
-            }
-
-            try
-            {
-                position.Y = int.Parse(inputFields[3]);
-            }
-            catch (FormatException)
-            {
-                throw new InputParseException(string.Format(InputParseException.InvalidValueFormatMessage, inputFields[3]));
-            }
-
-            var orientationChar = inputFields[4];
-            position.Orientation = OrientationExtensions.Parse(orientationChar);
-
-            return position;
-        }
 
         public override string ToString()
         {

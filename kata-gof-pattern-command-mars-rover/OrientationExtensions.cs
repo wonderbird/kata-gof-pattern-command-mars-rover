@@ -25,5 +25,18 @@ namespace kata_gof_pattern_command_mars_rover
         {
             return CharacterToOrientation[orientationChar];
         }
+
+        public static bool TryParse(string orientationChar, out Orientation value)
+        {
+            value = Orientation.North;
+
+            if (CharacterToOrientation.ContainsKey(orientationChar))
+            {
+                value = CharacterToOrientation[orientationChar];
+                return true;
+            }
+
+            return false;
+        }
     }
 }
