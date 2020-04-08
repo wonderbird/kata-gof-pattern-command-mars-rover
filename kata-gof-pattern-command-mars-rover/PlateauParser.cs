@@ -1,14 +1,12 @@
 ﻿namespace kata_gof_pattern_command_mars_rover
 {
-    public class PlateauParser
+    public static class PlateauParser
     {
         private const int IndexOfAreaSizeX = 0;
         private const int IndexOfAreaSizeY = 1;
 
-        public static Plateau Parse(string input)
+        public static Plateau Parse(string[] inputFields)
         {
-            var inputFields = input.Split(' ');
-
             ValidateInput(inputFields);
 
             var plateau = new Plateau();

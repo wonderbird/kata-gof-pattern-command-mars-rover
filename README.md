@@ -38,6 +38,9 @@ Goal: You are given the input described above. Move the rover according to the i
 * Implement commands that move the rover forward (M).
 * Implement commands that turn the rover left/right (L,R).
 * If the input string is malformed, the rover must not move at all but an error message must be returned.
+
+From this point, the additional requirements do not contribute to further development of the Command pattern:
+
 * Implement wrapping from one edge of the grid to another. (planets are spheres after all)
 * Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point and reports the obstacle.
 
@@ -68,7 +71,7 @@ Sample output:
 
 - Avoid duplicated code (use `tools\dupfinder.bat`).
 - Fix all static code analysis warnings.
-- Check the Cyclomatic Complexity of your source code files. For me, the most complex class hat a value of 8. See Visual Studio -> Analyze -> Calculate Code Metrics.
+- Check the Cyclomatic Complexity of your source code files. For me, the most complex class hat a value of 8 and the most complex method has a value of 5. See Visual Studio -> Analyze -> Calculate Code Metrics.
 
 ## References
 

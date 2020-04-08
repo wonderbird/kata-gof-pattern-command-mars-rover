@@ -4,6 +4,8 @@ namespace kata_gof_pattern_command_mars_rover
 {
     public class RoverController
     {
+        private const int NumberOfInputFields = 5;
+
         private Position _position;
         private Plateau _plateau;
 
@@ -11,8 +13,11 @@ namespace kata_gof_pattern_command_mars_rover
         {
             try
             {
-                _position = PositionParser.Parse(input);
-                _plateau = PlateauParser.Parse(input);
+                var inputFields = input.Split(' ');
+                ValidateNumberOfInputFields(inputFields);
+
+                _plateau = PlateauParser.Parse(inputFields);
+                _position = PositionParser.Parse(inputFields);
 
                 var commands = ParseCommands(input);
 
@@ -24,6 +29,12 @@ namespace kata_gof_pattern_command_mars_rover
             {
                 return e.Message;
             }
+        }
+
+        private static void ValidateNumberOfInputFields(string[] inputFields)
+        {
+            if (inputFields.Length < NumberOfInputFields)
+                throw new InputParseException(InputParseException.InvalidPositionMessage);
         }
 
         private void ExecuteCommands(IEnumerable<Command> commands)
