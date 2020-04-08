@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace kata_gof_pattern_command_mars_rover
 {
@@ -30,35 +29,8 @@ namespace kata_gof_pattern_command_mars_rover
             foreach (var command in commands)
             {
                 command.Execute();
-                WrapPosition();
+                _position = Plateau.WrapPosition(_position);
             }
-        }
-
-        private void WrapPosition()
-        {
-            throw new Exception("TODO: Move wrapping into a separate class.");
-            var AreaSizeX = 5;
-            var AreaSizeY = 5;
-
-            _position.X = WrapCoordinate(_position.X, AreaSizeX);
-            _position.Y = WrapCoordinate(_position.Y, AreaSizeY);
-        }
-
-        private int WrapCoordinate(int unwrappedValue, int areaSize)
-        {
-            var wrappedValue = unwrappedValue;
-
-            if (unwrappedValue >= areaSize)
-            {
-                wrappedValue -= areaSize;
-            }
-
-            if (unwrappedValue < 0)
-            {
-                wrappedValue = areaSize + unwrappedValue;
-            }
-
-            return wrappedValue;
         }
 
         private List<Command> ParseCommands(string input)
