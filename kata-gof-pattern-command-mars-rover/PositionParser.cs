@@ -7,8 +7,6 @@
         private const int IndexOfY = 3;
         private const int IndexOfOrientation = 4;
 
-        private delegate bool TryParseFunc<TValue>(string inputField, out TValue value);
-
         public static Position Parse(string input)
         {
             var inputFields = input.Split(' ');
@@ -28,18 +26,12 @@
 
         private static void ValidateInput(string[] inputFields)
         {
+            // TODO: Move Field count validation out to higher level
             ValidateNumberOfFields(inputFields);
 
-            ValidateParsing<int>(inputFields[IndexOfX], int.TryParse);
-            ValidateParsing<int>(inputFields[IndexOfY], int.TryParse);
-            ValidateParsing<Orientation>(inputFields[IndexOfOrientation], OrientationExtensions.TryParse);
-        }
-
-        private static void ValidateParsing<TValue>(string inputField, TryParseFunc<TValue> tryParseFunc)
-        {
-            if (!tryParseFunc(inputField, out _))
-                throw new InputParseException(string.Format(InputParseException.InvalidValueFormatMessage,
-                    inputField));
+            ParseStringValidator.ValidateParsing<int>(inputFields[IndexOfX], int.TryParse);
+            ParseStringValidator.ValidateParsing<int>(inputFields[IndexOfY], int.TryParse);
+            ParseStringValidator.ValidateParsing<Orientation>(inputFields[IndexOfOrientation], OrientationExtensions.TryParse);
         }
 
         private static void ValidateNumberOfFields(string[] inputFields)

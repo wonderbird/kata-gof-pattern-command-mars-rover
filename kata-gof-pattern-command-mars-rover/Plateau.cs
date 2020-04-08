@@ -2,18 +2,18 @@
 {
     public class Plateau
     {
-        public static Position WrapPosition(Position position)
-        {
-            var AreaSizeX = 5;
-            var AreaSizeY = 5;
+        public int AreaSizeX { get; set; }
+        public int AreaSizeY { get; set; }
 
+        public Position WrapPosition(Position position)
+        {
             position.X = WrapCoordinate(position.X, AreaSizeX);
             position.Y = WrapCoordinate(position.Y, AreaSizeY);
 
             return position;
         }
 
-        private static int WrapCoordinate(int unwrappedValue, int areaSize)
+        private int WrapCoordinate(int unwrappedValue, int areaSize)
         {
             var wrappedValue = unwrappedValue;
 

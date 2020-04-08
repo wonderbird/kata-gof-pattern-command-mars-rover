@@ -5,12 +5,14 @@ namespace kata_gof_pattern_command_mars_rover
     public class RoverController
     {
         private Position _position;
+        private Plateau _plateau;
 
         public string ProcessInput(string input)
         {
             try
             {
                 _position = PositionParser.Parse(input);
+                _plateau = PlateauParser.Parse(input);
 
                 var commands = ParseCommands(input);
 
@@ -29,7 +31,7 @@ namespace kata_gof_pattern_command_mars_rover
             foreach (var command in commands)
             {
                 command.Execute();
-                _position = Plateau.WrapPosition(_position);
+                _position = _plateau.WrapPosition(_position);
             }
         }
 
