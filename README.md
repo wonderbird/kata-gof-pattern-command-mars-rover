@@ -15,7 +15,9 @@ A robotic rover is to be landed by NASA on a plateau on Mars. This plateau, whic
 
 Assume that the square directly North from (x, y) is (x, y+1).
 
-Develop an api that moves a rover around on a grid.
+Develop an api that moves a rover around on a grid. Use the command pattern.
+
+![Command Pattern](CommandPattern.png)
 
 ## Requirements
 

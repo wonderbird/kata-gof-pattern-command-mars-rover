@@ -6,7 +6,7 @@ namespace kata_gof_pattern_command_mars_rover
 {
     public class CommandParser
     {
-        private readonly List<ICommandFactory> _availableCommands = new List<ICommandFactory>
+        private readonly List<ICommandFactory> _commandFactories = new List<ICommandFactory>
         {
             new MoveCommand(),
             new TurnLeftCommand(),
@@ -28,7 +28,7 @@ namespace kata_gof_pattern_command_mars_rover
 
         private ICommandFactory FindCommandFactory(char commandChar)
         {
-            return _availableCommands.FirstOrDefault(x => x.CommandName == commandChar);
+            return _commandFactories.FirstOrDefault(x => x.CommandName == commandChar);
         }
     }
 }

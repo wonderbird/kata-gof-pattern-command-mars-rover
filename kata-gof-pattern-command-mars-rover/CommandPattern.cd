@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="kata_gof_pattern_command_mars_rover.RoverController">
+    <Position X="0.5" Y="3" Width="2" />
+    <Members>
+      <Method Name="ValidateNumberOfInputFields" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAACACAAAgAAAAAAAAgIAAAEA=</HashCode>
+      <FileName>RoverController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_pattern_command_mars_rover.CommandParser">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CommandParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_pattern_command_mars_rover.Command">
+    <Position X="5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Command.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="kata_gof_pattern_command_mars_rover.MoveCommand" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <InheritanceLine Type="kata_gof_pattern_command_mars_rover.Command" FixedToPoint="true">
+      <Path>
+        <Point X="5.875" Y="2.055" />
+        <Point X="5.875" Y="3.375" />
+        <Point X="5.25" Y="3.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAQAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>MoveCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="kata_gof_pattern_command_mars_rover.TurnLeftCommand" Collapsed="true">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <InheritanceLine Type="kata_gof_pattern_command_mars_rover.Command" FixedToPoint="true">
+      <Path>
+        <Point X="5.875" Y="2.055" />
+        <Point X="5.875" Y="4.312" />
+        <Point X="5.25" Y="4.312" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAQAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>TurnLeftCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="kata_gof_pattern_command_mars_rover.TurnRightCommand" Collapsed="true">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <InheritanceLine Type="kata_gof_pattern_command_mars_rover.Command" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.875" Y="2.055" />
+        <Point X="5.875" Y="5.375" />
+        <Point X="5.25" Y="5.375" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAQAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>TurnRightCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="kata_gof_pattern_command_mars_rover.ICommandFactory">
+    <Position X="3" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICommandFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
